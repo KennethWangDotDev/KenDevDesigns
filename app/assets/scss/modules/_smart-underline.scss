@@ -1,10 +1,11 @@
 /* 
  * Sassy Link Underline: http://codepen.io/jimmynotjim/pen/EabQjV 
- * To use, apply @include link-underline($background, $color, $percent: 85%) {
+ * To use, apply @include link-underline
  * or apply @include link-underline-hover if you only want the affect when hovering 
  * Param1 $background is the color of the background behind the text
  * Param2 $color is the color you want the underline to be
  * Param3 is the percent that you can adjust to change height of the underline (range from 85% to 100%)
+ * Param4 is the width of the underline
  */
 
 @mixin text-underline-crop($background) {
@@ -22,26 +23,26 @@
                 -.18em 0 $background;
 }
 
-@mixin text-underline($color, $percent: 93%) {
+@mixin text-underline($color, $percent: 93%, $width: 1px) {
   background-image: linear-gradient($color, $color);
-  background-size: 1px 1px;
+  background-size: 1px $width;
   background-repeat: repeat-x;
   background-position: 0% $percent;
 }
 
-@mixin text-underline-hover($color, $percent: 93%) {
+@mixin text-underline-hover($color, $percent: 93%, $width: 1px) {
   &:hover, &:active, &:focus {
     background-image: linear-gradient($color, $color);
-    background-size: 1px 1px;
+    background-size: 1px $width;
     background-repeat: repeat-x;
     background-position: 0% $percent;
   }
 }
 
 
-@mixin link-underline($background, $color, $percent: 93%) {
+@mixin link-underline($background, $color, $percent: 93%, $width: 1px) {
   @include text-underline-crop($background);
-  @include text-underline($color, $percent);
+  @include text-underline($color, $percent, $width);
 
   text-decoration: none;
 
@@ -54,9 +55,9 @@
   }
 }
 
-@mixin link-underline-hover($background, $color, $percent: 93%) {
+@mixin link-underline-hover($background, $color, $percent: 93%, $width: 1px) {
   @include text-underline-crop($background);
-  @include text-underline($color, $percent);
+  @include text-underline($color, $percent, $width);
 
   text-decoration: none;
 
@@ -67,8 +68,4 @@
   &:before {
     text-shadow: none;
   }
-}
-
-a {
-  @include link-underline(white, color($theme-color));
 }

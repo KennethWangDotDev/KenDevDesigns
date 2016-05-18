@@ -1,0 +1,24 @@
+/*
+ * http://www.stubbornella.org/content/2010/06/25/the-media-object-saves-hundreds-of-lines-of-code/
+ */
+
+ @mixin media-wrapper {
+   overflow:hidden;
+   _overflow:visible;
+   zoom:1;
+ }
+
+ @mixin media-image($margin: 1rem) {
+   float:left;
+   margin-right: $margin;
+   img {
+     display: block;
+   }
+ }
+
+ @mixin media-body {
+   overflow:hidden;
+   _overflow:visible;
+   zoom:1;
+ }
+

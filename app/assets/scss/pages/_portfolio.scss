@@ -1,0 +1,157 @@
+.portfolio__container {
+  @include container(85rem);
+  padding-left: 2rem;
+  padding-right: 2rem;
+  @media (max-width: $breakpoint-mobile) {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+  }
+  
+  .main-title {
+    @include size(h1);
+    @include margin-bottom(0.25);
+    text-align: center;
+    font-weight: 800;
+  }
+  .main-desc {
+    @include size(h3);
+    font-weight: 100;
+    text-align: center;
+    font-style: italic;
+    color: color($grey, 600);
+    line-height: 1.4;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    display: block;
+    @include margin-bottom(1);
+  }
+
+  hr {
+    @include easy-hr;
+    @include margin-bottom(4);
+  }
+}
+
+.portfolio__entry {
+  lost-utility: clearfix;
+  @include margin-bottom(6);
+  
+  .text-col {
+    lost-column: 1/3;
+    lost-move: 1/12;
+    padding-top: 3rem;
+  }
+      .role {
+        font-size: 0.94rem;
+        color: color($grey, 500);
+        @include margin-bottom(0.5);
+        @media (max-width: $breakpoint-mobile) {
+          font-size: 0.85rem;
+        }
+      }
+      .title {
+        @include margin-bottom(1);
+        font-size: 3rem;
+        font-weight: 800;
+        text-transform: uppercase;
+        line-height: 1;
+        @media (max-width: 54em) {
+          @include size(h2);
+        }
+      }
+      .short-desc {
+        @include size(h4);
+        @include margin-bottom(1);
+        @include serious-font;
+      }
+
+      button {
+        @include button-lite;
+        @include size(h4);
+        padding: 1rem 2rem;
+        @media (max-width: $breakpoint-mobile) {
+          padding: 0.75rem 1.5rem;
+        }
+        
+      }
+
+
+  .image-col {
+    lost-column: 27/48;
+    position: relative;
+  }
+
+      .iphone {
+        position: absolute;
+        margin: 0;
+        bottom: -2rem;
+        right: -4rem;
+      }
+
+
+  &:nth-child(odd) {
+    .browser {
+      float: right;
+    }
+    .iphone {
+      position: absolute;
+      margin: 0;
+      bottom: -2rem;
+      left: -4rem;
+    }
+    .text-col {
+      lost-column: 1/3;
+      lost-move: -27/48;
+    }
+    .image-col {
+      lost-column: 27/48;
+      lost-move: 5/12;
+      position: relative;
+    }
+  }
+  
+  /* All positioning related media queries
+   * Sort of a hack - double / triple specificy trick
+   */
+
+  @media (max-width: 74em) {
+    .text-col.text-col.text-col,
+    .image-col.image-col.image-col {
+      @include clearfix;
+      max-width: 50rem;
+      width: 100%;
+      left: 0;
+      float: none;
+      clear: both;
+      margin: auto;
+      text-align: center;
+    }
+    
+    .browser.browser {
+      float: left;
+      width: 85%;
+    }
+
+    .iphone.iphone {
+      position: absolute;
+      margin: 0;
+      bottom: -1rem;
+      right: 0rem;
+      left: initial;
+      width: 30%;
+    }
+    .text-col {
+      padding-top: 3rem;
+    }
+  }
+  @media (max-width: $breakpoint-mobile) {
+    .iphone.iphone {
+      bottom: 0;
+      width: 32.5%;
+    }
+    .text-col {
+      padding-top: 1.5rem;
+    }
+  }
+}
+

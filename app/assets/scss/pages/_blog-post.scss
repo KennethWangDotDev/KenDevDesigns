@@ -1,0 +1,89 @@
+.blog-post__container {
+  @include container(80rem);
+  .title {
+    @include margin-bottom(0.25);
+    text-align: center;
+    line-height: 1.25;
+    @include serious-font;
+    font-weight: 800;
+  }
+
+  .date {
+    @include container;
+    font-size: 0.94rem;
+    display: block;
+    text-align: center;
+    color: color($grey, 500);
+    border-top: 1px solid color($grey, 300);
+    border-bottom: 1px solid color($grey, 300);
+    padding-top: 0.1rem;
+    padding-bottom: 0.1rem;
+    @include margin-bottom(1);
+  }
+}
+
+.blog-post__content {
+  @include container;
+    a {
+    color: color($theme-color);
+    @include link-underline(white, color($theme-color), 93%);
+  }
+
+  h1,
+  p,
+  ul,
+  ol,
+  small {
+    @include margin-bottom(1);
+  }
+
+  h2,
+  h3 {
+    @include serious-font;
+    font-weight: 800;
+    @include margin-top(2);
+    @include margin-bottom(0.5);
+  }
+
+  blockquote {
+    @include margin-top(1);
+    @include margin-bottom(1);
+    @include size(p);
+    @include serious-font;
+    padding: 1rem 0 1rem 1.6rem;
+    border-left: 0.5rem solid color($theme-color);
+      p {
+        margin-bottom: 0;
+      }
+  }
+  code {
+    @include size(small);
+  }
+
+  cite {
+  &:before {
+    content: '\2014 ';
+  }
+    color: color($grey, 500);
+    display: block;
+  }
+  figure {
+    max-width: 90%;
+    margin: auto;
+    margin-bottom: $whitespace;
+    img {
+      display: block;
+      margin: auto;
+      border: 1px solid #eee;
+    }
+    figcaption {
+      font-size: 0.95rem;
+      opacity: 0.65;
+      text-align: center;
+      margin-top: $whitespace * 0.25;
+      a {
+        background-position: 0% 99%; /* Smart Underline fix */
+      }
+    }
+  }
+}

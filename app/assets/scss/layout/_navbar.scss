@@ -1,11 +1,307 @@
 .global__nav {
-  @include margin-bottom(2);
-  background-color: color($theme-color, 700);
-  height: 5rem;
-  position: relative;
+  width: 100%;
+}
+
+.nav__list {
+  padding-left: 1.25rem;
+  padding-bottom: 1.5rem;
+  padding-top: 1.25rem;
   
-    p {
-      @include center;
-      color: white;
+  @media (max-width: $breakpoint-mobile) {
+    padding: 0.75rem 0.5rem 0.75rem 0.5rem;
+    text-align: center;
+    margin-bottom: 0;
+  }
+  
+      li {
+        display: inline-block;
+      }
+      .active.active {
+        color: $body-color;
+      }
+      .logo {
+        width: 3.9rem;
+        margin-right: 0.75rem;
+        vertical-align: middle;
+        @media (max-width: $breakpoint-mobile) {
+          display: inline-block;
+          width: 100%;
+          text-align: center;
+          img {
+            width: 4.25rem;
+          }
+        }
+      }
+      .title {
+        @include fancy-font;
+        font-size: 1.1rem;
+        letter-spacing: 0.2rem;
+        text-transform: uppercase;
+        margin-right: 1rem;
+        @media (max-width: $breakpoint-mobile) {
+          font-size: 1.05rem;
+          display: block;
+          text-align: center;
+          margin-bottom: -0.25rem;
+          padding-left: 0.2rem; // centering fix for letter-spacing
+            &:after {
+              content:"\a";
+              white-space: pre;
+            }
+        }
+      }
+      .brace {
+        font-size: 1.65rem;
+        font-weight: 100;
+      }
+      .link {
+        font-size: 0.94rem;
+        padding-right: 1rem;
+        padding-left: 1rem;
+        border-right: 1px solid color($grey, 400);
+        color: color($grey, 400);
+        position: relative;
+        bottom: 0.07rem;
+        @media (max-width: $breakpoint-mobile) { 
+          font-size: 0.9rem;
+          padding-right: 0.65rem;
+          padding-left: 0.65rem;
+        }
+      }
+      .link:nth-last-child(2) {
+        border: none;
+      }
+}
+
+
+/* Contact Open + Animation Setup */
+
+.contact__open {
+  overflow: hidden;
+  position: relative;
+  .global__contact {
+    z-index: 200;
+    opacity: 1;
+    transition: opacity 1s;
+    transition-delay: 0.3s;
+  }
+}
+
+  .global__contact {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin-top: 0;
+    z-index: -1;
+    opacity: 0;
+  }
+
+
+  .global__contact--animation {
+    position: absolute;
+    top: -250px;
+    left: -250px;
+    width: 500px;
+    height: 500px;
+    border-radius: 50%;
+    background: color($theme-color);
+    z-index: 100;
+
+    transform: scale(0);
+    -webkit-transition: -webkit-transform 0.35s;
+    transition: transform 0.35s;
+    
+    .contact__open & {
+      transform: scale(10);
+      -webkit-transition: -webkit-transform 1.3s;
+      transition: transform 1.3s;
     }
+  }
+
+
+/* Contact Modal Content */
+
+.global__contact {
+
+    .close {
+        position: absolute;
+        top: 2rem;
+        right: 4rem;
+        z-index: 1;
+        
+        line-height: 1;
+        width: 6rem;
+        height: 6rem;
+        
+        color: white;
+        opacity: 0.65;
+        background-color: transparent;
+        
+        border: none;
+        font-size: 5rem;
+        font-weight: 800;
+        
+        @media (max-width: $breakpoint-tablet) {
+          right: 1rem;
+        }
+        @media (max-width: $breakpoint-mobile) {
+          font-size: 3rem;
+          width: 3rem;
+          height: 3rem;
+          right: 0.15rem;
+          top: 0.15rem;
+        }
+    }
+
+  .title {
+    text-align: center;
+    margin-top: 3.5rem;
+    color: white;
+    font-size: 4.5rem;
+    font-weight: 800;
+    margin-bottom: 2rem;
+    @media (max-width: $breakpoint-tablet) {
+      font-size: 3.5rem;
+    }
+    @media (max-width: $breakpoint-mobile) {
+      font-size: 2.5rem;
+    }
+  }
+
+  //CodePen by Josh Adamous
+  form {
+      max-width: 650px;
+      padding-left: 25px;
+      padding-right: 25px;
+      margin: auto;
+  }
+
+  .group { 
+    position: relative; 
+    margin-bottom: 45px; 
+  }
+
+  .field {
+      font-size: 18px;
+      padding: 10px 10px 10px 5px;
+      -webkit-appearance: none;
+      display: block;
+      background: transparent;
+      color: white;
+      width: 100%;
+      border: none;
+      border-radius: 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+  }
+
+  .field:focus { outline: none; }
+
+
+  /* Label */
+
+  label {
+    color: rgba(255, 255, 255, 0.5); 
+    font-size: 18px;
+    font-weight: normal;
+    position: absolute;
+    pointer-events: none;
+    left: 5px;
+    top: 10px;
+    -webkit-transition:all 0.2s ease;
+    transition: all 0.2s ease;
+  }
+
+
+  /* active */
+
+  .field.used ~ label, .field:focus ~ label {
+    top: -20px;
+    -webkit-transform: scale(.75);
+            transform: scale(.75); left: -2px;
+    /* font-size: 14px; */
+    color: rgba(255, 255, 255, 0.5);
+  }
+
+
+  /* Underline */
+
+  .bar {
+    position: relative;
+    display: block;
+    width: 100%;
+  }
+
+  .bar:before, .bar:after {
+    content: '';
+    height: 2px; 
+    width: 0;
+    bottom: 1px; 
+    position: absolute;
+    background: rgba(255, 255, 255, 0.5); 
+    -webkit-transition:all 0.2s ease; 
+    transition: all 0.2s ease;
+  }
+
+  .bar:before { left: 50%; }
+
+  .bar:after { right: 50%; }
+
+
+  /* active */
+
+  .contact__field:focus ~ .bar:before, .contact__field:focus ~ .bar:after { width: 50%; }
+
+/* Highlight */
+
+  .highlight {
+    position: absolute;
+    height: 60%; 
+    width: 100px; 
+    top: 25%; 
+    left: 0;
+    pointer-events: none;
+    opacity: 0.5;
+  }
+
+
+  /* active */
+
+  .field:focus ~ .highlight {
+    -webkit-animation: inputHighlighter 0.3s ease;
+            animation: inputHighlighter 0.3s ease;
+  }
+
+
+  /* Animations */
+
+  @-webkit-keyframes inputHighlighter {
+    from { background: white; }
+    to  { width: 0; background: transparent; }
+  }
+
+  @keyframes inputHighlighter {
+    from { background: white; }
+    to  { width: 0; background: transparent; }
+  }
+
+  .submit-wrapper {
+    width: 100%;
+  }
+
+  .submit {
+    display: block;
+    margin: auto;
+    background: transparent;
+    border: none;
+  }
+
+  .submit-label {
+    color: white;
+      display: inline;
+      border-bottom: 1px solid white;
+      padding: 3px;
+  }
+  
 }

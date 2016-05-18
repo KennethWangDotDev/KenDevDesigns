@@ -1,0 +1,119 @@
+.blog__container {
+  @include container(60rem);
+}
+
+.blog__header {
+  @include margin-bottom(2);
+  .title {
+    @include size(h1);
+    @include margin-bottom(0.25);
+    font-weight: 800;
+    text-align: center;
+    
+    /* Making it extra small on mobile to make title fit in a single line */
+    @media (max-width: 30rem) {
+      font-size: 1.8rem;
+    }
+    @media (max-width: 25rem) {
+      font-size: 1.65rem;
+    }
+  }
+  .desc {
+    @include size(h3);
+    font-weight: 100;
+    text-align: center;
+    font-style: italic;
+    color: color($grey, 600);
+    line-height: 1.4;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+      .desc a {
+        @include link-underline(white, color($theme-color, 100), 95%, 2px);
+      }
+}
+
+.blog__list {
+  .wrapper {
+    @include clearfix;
+    @include margin-bottom(1);
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    max-width: 35rem;
+    min-height: 9rem;
+  }
+
+  .entry {
+    @include media-wrapper;
+    &:hover .title {
+      color: color($theme-color);
+      @include link-underline(white, color($theme-color, 200), 100%, 2px);
+    }
+  }
+
+      .thumbnail {
+        @include media-image;
+        width: 7rem;
+        @media (max-width: $breakpoint-tablet) {
+          width: 5rem;
+        }
+        @media (max-width: $breakpoint-mobile) {
+          width: 3rem;
+        }
+      }
+
+          img {
+            border-radius: 50%;
+            margin-top: 1rem;
+          }
+
+      .textarea {
+        @include media-body;
+      }
+          .date {
+            font-size: 0.9rem;
+            display: block;
+            margin-bottom: 0;
+            line-height: 1.5;
+            padding-bottom: 0.1rem;
+            color: color($grey, 500);
+          }
+          .title {
+            font-size: 1.35rem;
+            line-height: 1;
+            color: color($theme-color);
+            display: inline;
+            @include fancy-font;
+            margin-bottom: 1rem;
+            @media (max-width: $breakpoint-tablet) {
+              font-size: 1.25rem;
+            }
+            @media (max-width: $breakpoint-mobile) {
+              font-size: 1.2rem;
+            }
+          }
+
+          .desc {
+            @include size(small);
+            opacity: 0.9;
+            margin-top: 0.2rem;
+            line-height: 1.4;
+          }
+
+  .return-wrapper {
+    display: block;
+    text-align: center;
+    padding-top: 1rem;
+  }
+  .return {
+    @include size(h3);
+    @include link-underline(white, color($theme-color, 100), 95%, 2px);
+    font-weight: 100;
+    text-align: center;
+    font-style: italic;
+    color: color($grey, 600);
+    display: inline;
+  }
+}

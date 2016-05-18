@@ -1,0 +1,66 @@
+<nav class="global__nav">
+
+    <ul class="nav__list">
+
+       <li class="logo">
+          <a href="http://kendevdesigns.com"><img src="/assets/images/responsive-design.png" /></a>
+       </li>
+
+       <li class="title">
+          <a href="http://kendevdesigns.com">KenDevDesigns</a>
+       </li>
+
+       <li class="brace">
+          <span>{</span>
+       </li>
+
+       <li class="link">
+          <a {{#if nav-home}}class="active"{{/if}} href="http://kendevdesigns.com">Home</a>
+       </li>
+       <li class="link">
+          <a {{#if nav-portfolio}}class="active"{{/if}} href="/portfolio/">Portfolio</a>
+       </li>
+       <li class="link">
+          <a {{#if nav-blog}}class="active"{{/if}} href="/blog/">Blog</a>
+       </li>
+       <li class="link">
+          <a class="contact" href="javascript:;">Contact</a>
+       </li>
+
+       <li class="brace">
+          <span>}</span>
+       </li>
+      
+    </ul>
+</nav>
+
+
+<section class="global__contact">
+    <h1 class="title">Contact Me</h1>
+    <button class="close">×</button>
+    <form action="//formspree.io/kennethwang14@gmail.com" method="POST">
+      <div class="group">
+        <input class="field" type="text" name="name"><span class="highlight"></span><span class="bar"></span>
+        <label>Name</label>
+      </div>
+      <div class="group">
+        <input class="field" type="email" name="_replyto"><span class="highlight"></span><span class="bar"></span>
+        <label>Email</label>
+      </div>
+      <div class="group">
+        <textarea id="message" class="field" type="email" name="message"></textarea><span class="highlight"></span><span class="bar"></span>
+        <label>Message</label>
+      </div>
+      <div class="submit-wrapper">
+        <button type="submit" class="submit">
+          <h2 class="submit-label">Submit</h2>
+        </button>
+      </div>
+    </form>
+</section>
+<div class="global__contact--animation"></div>
+
+
+
+
+

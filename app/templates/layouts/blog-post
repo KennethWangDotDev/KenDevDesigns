@@ -1,0 +1,46 @@
+<!doctype html>
+<!--#if expr="$HTTP_COOKIE=/fonts-loaded=true/" -->
+<html lang="en" class="fonts-loaded">
+<!--#else -->
+<html lang="en">
+<!--#endif -->
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>KenDevDesigns - {{title}}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <link rel="stylesheet" href="/assets/css/main.css">
+    
+    <link rel="manifest" href="/manifest.json">
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#41a9c7">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="msapplication-TileImage" content="/mstile-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+
+    <!--[if lt IE 9]>
+      <script src="assets/js/polyfill/html5-shiv.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    {{> nav }}
+    <div class="blog-post__container">
+      
+      <h1 class="title">{{title}}</h1>
+      <span class="date">{{formatDate date}}</span>
+      <section class="blog-post__content">
+      {{{contents}}}
+      </section>
+      
+    </div>
+
+    <!--[if lt IE 9]>
+      <script src="http://code.jquery.com/jquery-1.12.0.min.js"></script>
+      <script src="assets/js/polyfill/ie-love.js"></script>
+    <![endif]-->
+    <!--[if gt IE 8]><!-->
+    <script src="http://code.jquery.com/jquery-2.2.0.min.js"></script>
+    <!--<![endif]-->
+    <script src="/assets/js/merged.js"></script>
+  </body>
+</html>

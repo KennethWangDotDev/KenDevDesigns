@@ -1,0 +1,14 @@
+@mixin easy-hr($level: 2) {
+  background-color: #757575;
+  height: 2px;
+  width: 6rem;
+  margin: 0 auto;
+  @include margin-bottom($level);
+}
+
+@mixin gradient-hr($level: 2) {
+  border : 0;
+  height: 1px; 
+  background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0)); 
+  @include margin-bottom($level);
+}

@@ -1,0 +1,100 @@
+---
+layout: default
+title: Home
+nav-home: true
+permalink: false
+---
+<div class="home__container">
+
+
+	<section class="home__header">
+		<div class="home-wrapper">
+
+					<div class="col">
+						<span class="hi">Hi, I'm</span>
+						<h1 class="name">KENNETH WANG</h1>
+					</div>
+					<div class="col">
+						<h2 class="tagline">I combine beautiful code and stunning design to create amazing products.</h2>
+					</div>
+					<hr>
+					<div class="type-wrapper">
+						<span class="typewriter"></span>
+					</div>
+
+
+		</div>
+		<div class="face"></div>
+	</section>
+
+
+	<section class="home__expertise">
+		<h1 class="title">MY EXPERTISE</h1>
+		<hr>
+
+			<div class="wrapper">
+
+					<div class="block">
+						<img src="/assets/images/view.svg" />
+						<h2 class="subtitle">BRANDING</h2>
+						<h3 class="desc">Make your customers feel confident with a strong brand that stands out in the marketplace.</h3>
+					</div>
+
+					<div class="block">
+						<img src="/assets/images/computer_add.svg" />
+						<h2 class="subtitle">WEB DESIGN</h2>
+						<h3 class="desc">I design and develop responsive and easy to use websites that are coded with industry-standard technology.</h3>
+					</div>
+
+					<div class="block">
+						<img src="/assets/images/iphone.svg" />
+						<h2 class="subtitle">MOBILE APP</h2>
+						<h3 class="desc">Using iOS, Android and an expert vision, I’ll take your application to the next level.</h3>
+					</div>
+
+			</div>
+	</section>
+
+
+
+	<section class="home__latest">
+			
+			<div class="wrapper">
+					<div class="header">
+						<h3 class="header-title">FEATURED WORK</h3>
+						<a class="view-more" href="/portfolio/">View more →</a>
+					</div>
+
+					<a class="entry" href="{{collections.portfolio.0.path}}">
+						<div class="thumbnail">
+							<img src="/assets/images/{{collections.portfolio.0.thumbnail}}">
+						</div>
+						<div class="textarea">
+							<h1 class="title">{{collections.portfolio.0.title}}</h1>
+							<h2 class="desc">{{collections.portfolio.0.shortDescription}}</h2>
+						</div>
+					</a>
+			</div>
+
+
+			<div class="wrapper">
+					<div class="header">
+						<h3 class="header-title">LATEST POST</h3>
+						<a class="view-more" href="/blog/">View more →</a>
+					</div>
+
+					<a class="entry" href="{{collections.blog.0.path}}">
+						<div class="thumbnail">
+							<img src="/assets/images/{{collections.blog.0.thumbnail}}">
+						</div>
+						<div class="textarea">
+							<h1 class="title">{{collections.blog.0.title}}</h1>
+							<h2 class="desc">{{collections.blog.0.description}}</h2>
+						</div>
+					</a>
+			</div>
+
+		</section>
+
+
+</div>

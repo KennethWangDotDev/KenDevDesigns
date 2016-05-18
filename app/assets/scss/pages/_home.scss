@@ -1,14 +1,364 @@
 .home__container {
-  @include container;
+
+}
+
+.home__header {
+  $page-breakpoint-large: 90em;
+  $page-breakpoint-medium: 75em;
+  $page-breakpoint-small: 60em;
+  margin-left: 16%;
+  margin-top: 5%;
+  padding-bottom: 10rem;
+  position: relative;
   
-  .title {
-    @include margin-bottom(0.25);
-    text-align: center;
+  /* Smoothes margin-left as browser width shrinks */
+  @media (max-width: 110em) {
+    margin-left: 12%;
+  }
+  @media (max-width: 100em) {
+    margin-left: 8%;
+  }
+  @media (max-width: $page-breakpoint-large) {
+    margin-left: 6%;
+  }
+  @media (max-width: $page-breakpoint-medium) {
+    margin-top: 6%;
+    padding-bottom: 4rem;
+  }
+  @media (max-width: $breakpoint-mobile) {
+    margin-left: 0.75rem;
+    margin-right: 0.75rem;
   }
 
-  .author {
-    @include size(h4);
-    text-align: center;
-    font-style: italic;
+  .home-wrapper {
+    max-width: 60rem;
+    @media (max-width: $page-breakpoint-large) {
+      max-width: 54rem;
+    }
   }
+
+  .col {
+    display: table-cell;
+    vertical-align: bottom;
+    
+    &:first-child {
+      padding-right: 1.5rem;
+      width: 1%; /* fix for some browsers */
+    }
+    @media (max-width: $page-breakpoint-small) {
+      display: block;
+      &:first-child {
+        width: 100%;
+      }
+    }
+  }
+
+  .hi {
+    font-size: 1.25rem;
+    text-indent: 0.35rem;
+    display: inline-block;
+    @media (max-width: $page-breakpoint-small) {
+      display: block;
+      text-indent: 0.2rem;
+      font-size: 1.2rem;
+    }
+    @media (max-width: $breakpoint-mobile) {
+      font-size: 1.15rem;
+    }
+  }
+
+  .name {
+    display: inline-block;
+    font-weight: 800;
+    font-size: 5.65rem;
+    text-align: right;
+    line-height: 0.9;
+    margin-bottom: 0;
+    @media (max-width: $page-breakpoint-large) {
+      font-size: 5rem;
+    }
+    @media (max-width: $page-breakpoint-small) {
+      font-size: 4rem;
+      margin-bottom: 0.5rem;
+      text-align: left;
+    }
+    @media (max-width: $breakpoint-mobile) {
+      font-size: 2.8rem;
+    }
+  }
+
+  .tagline {
+    font-size: 1.75rem;
+    font-weight: 100;
+    letter-spacing: 0.1rem;
+    margin-bottom: 1rem;
+    line-height: 1.5;
+    @media (max-width: $page-breakpoint-large) {
+      font-size: 1.55rem;
+    }
+    @media (max-width: $page-breakpoint-small) {
+      max-width: 90%;
+      line-height: 1.3;
+      margin-bottom: 0;
+    }
+    @media (max-width: $breakpoint-mobile) {
+      font-size: 1.3rem;
+    }
+    @media (max-width: $breakpoint-mobile) {
+      max-width: 100%;
+    }
+  }
+
+  hr {
+    height: 0px;
+    margin-top: 4rem;
+    margin-bottom: 4rem;
+    border-width: 1px 0px;
+    border-top: 1px solid rgba(0, 0, 0, 0.0980392);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.298039);
+    @media (max-width: $page-breakpoint-small) {
+      margin-top: 2rem;
+      margin-bottom: 2rem;
+      max-width: 90%;
+    }
+  }
+  .type-wrapper {
+    height: 4rem;
+    max-width: 85%;
+    @media (max-width: $page-breakpoint-small) {
+      max-width: 90%;
+    }
+    @media (max-width: $breakpoint-mobile) {
+      max-width: 100%;
+    }
+  }
+
+  .typewriter {
+    font-family: monospace;
+    font-size: 1.4rem;
+    color: color($grey, 600);
+    @media (max-width: $page-breakpoint-small) {
+      font-size: 1.3rem;
+    }
+    @media (max-width: $breakpoint-mobile) {
+      font-size: 1.2rem;
+    }
+  }
+
+  .typed-cursor{
+    opacity: 1;
+    -webkit-animation: blink 0.7s infinite;
+    -moz-animation: blink 0.7s infinite;
+    animation: blink 0.7s infinite;
+  }
+  @keyframes blink{
+    0% { opacity:1; }
+    50% { opacity:0; }
+    100% { opacity:1; }
+  }
+  @-webkit-keyframes blink{
+      0% { opacity:1; }
+      50% { opacity:0; }
+      100% { opacity:1; }
+  }
+  @-moz-keyframes blink{
+      0% { opacity:1; }
+      50% { opacity:0; }
+      100% { opacity:1; }
+  }
+
+  .face {
+    width: 37%;
+    height: 125%;
+    background-image: url("/assets/images/MonotoneFace.png");
+    background-size: cover;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+    
+    @media (max-width: 90em) {
+      width: 35%;
+      height: 125%;
+    }
+    @media (max-width: 80em) {
+      width: 30%;
+      height: 125%;
+    }
+    @media (max-width: 75em) {
+      display: none;
+    }
+  }
+}
+
+
+
+.home__expertise {
+  $page-breakpoint-small: 60em;
+  padding: 4.5rem 2rem 6rem;
+  border-top: 1px solid color($grey, 300);
+  background: -webkit-linear-gradient(90deg, #ECE9E6 10%, #FFFFFF 90%); /* Chrome 10+, Saf5.1+ */
+  background:    -moz-linear-gradient(90deg, #ECE9E6 10%, #FFFFFF 90%); /* FF3.6+ */
+  background:     -ms-linear-gradient(90deg, #ECE9E6 10%, #FFFFFF 90%); /* IE10 */
+  background:      -o-linear-gradient(90deg, #ECE9E6 10%, #FFFFFF 90%); /* Opera 11.10+ */
+  background:         linear-gradient(90deg, #ECE9E6 10%, #FFFFFF 90%); /* W3C */
+  @media (max-width: $page-breakpoint-small) {
+    padding: 3.5rem 1rem;
+  }
+
+  .title {
+    @include margin-bottom(0.5);
+    @include fancy-font;
+    text-align: center;
+    font-size: 2.25rem;
+    letter-spacing: 0.2rem;
+    @media (max-width: $page-breakpoint-small) {
+      font-size: 1.85rem;
+      margin-bottom: 1.5rem;
+    }
+    @media (max-width: $breakpoint-mobile) {
+      font-size: 1.7rem;
+    }
+  }
+
+  hr {
+    @include easy-hr(2);
+  }
+
+  .wrapper {
+    max-width: 72rem;
+    margin: auto;
+    lost-utility: clearfix;
+  }
+
+      .block {
+        lost-column: 1/3;
+        @media (max-width: $breakpoint-mobile) {
+          lost-column: none;
+          lost-row: 1/3 3rem;
+          max-width: 20rem;
+          margin-left: auto;
+          margin-right: auto!important; /* TODO: Fix this later */
+        }
+      }
+
+          img {
+            display:block;
+            margin:auto;
+            margin-bottom: 2.25rem;
+            width: 6rem;
+            @media (max-width: $page-breakpoint-small) {
+              width: 5rem;
+              margin-bottom: 1.5rem;
+            }
+            @media (max-width: $breakpoint-mobile) {
+              width: 4rem;
+              margin-bottom: 1rem;
+            }
+          }
+          .subtitle {
+            @include fancy-font;
+            text-align: center;
+            font-size: 1.4rem;
+            margin-bottom: 0.5rem;
+            @media (max-width: $page-breakpoint-small) {
+              font-size: 1.3rem;
+            }
+          }
+          .desc {
+            text-align: center;
+            font-size: 1rem;
+            color: color($grey, 600);
+            opacity: 0.85;
+          }
+}
+
+
+
+.home__latest {
+  max-width: 72rem;
+  margin: auto;
+  padding: 4.5rem 2rem;
+  lost-utility: clearfix;
+  @media (max-width: 55rem) {
+    padding: 3.5rem 1rem;
+  }
+  
+    .wrapper {
+      lost-column: 1/2 0 4rem;
+      @media (max-width: 55rem) {
+        lost-column: none;
+        lost-row: 1/2 6rem;
+        max-width: 35rem;
+        margin-left: auto;
+        margin-right: auto!important; /* TODO: Fix this later */
+      }
+    }
+
+        .header {
+          position: relative;
+          border-bottom: 1px solid color($grey);
+          margin-bottom: 1rem;
+        }
+
+            .header-title {
+              @include size(p);
+              margin-bottom: 0;
+              position: absolute;
+              left: 0;
+              bottom: -5px;
+              color: color($grey);
+            }
+
+            .view-more {
+              position: absolute;
+              right: 0;
+              bottom: -3px;
+              color: color($grey);
+              font-size: 0.94rem;
+              @media (max-width: 30rem) {
+                font-size: 0.9rem;
+              }
+            }
+
+            .entry {
+              @include media-wrapper;
+              &:hover .title {
+                color: color($theme-color);
+                @include link-underline(white, color($theme-color, 100), 93%, 2px);
+              }
+            }
+
+                .thumbnail {
+                  @include media-image;
+                  width: 7rem;
+                  @media (max-width: 40rem) {
+                    width: 5rem;
+                  }
+                  @media (max-width: 30rem) {
+                    width: 3.5rem;
+                  }
+                }
+
+                    img {
+                      border-radius: 50%;
+                    }
+
+                .textarea {
+                  @include media-body;
+                }
+
+                    .title {
+                      font-size: 1.2rem;
+                      margin-bottom: 0.25rem;
+                      @include link-underline(white, color($grey, 400), 93%, 2px);
+                      display: inline;
+                      @include fancy-font;
+                    }
+
+                    .desc {
+                      font-size: 1rem;
+                      opacity: 0.9;
+                    }
+
 }

@@ -2,72 +2,192 @@
 // This file contains everything related to typography.
 // -----------------------------------------------------------------------------
 
-$line-height: 1.4;
-$heading-font: "proxima-nova", "Helvetica Neue", Helvetica, arial, sans-serif;
-$body-font: "proxima-nova", "Helvetica Neue", Helvetica, arial, sans-serif;
+@font-face {
+  font-family: 'Helvetica Neue';
+  src: url('/assets/fonts/subset-HelveticaNeueLTStd-Lt.eot');
+  src: url('/assets/fonts/subset-HelveticaNeueLTStd-Lt.eot?#iefix') format('embedded-opentype'),
+    url('/assets/fonts/subset-HelveticaNeueLTStd-Lt.woff2') format('woff2'),
+    url('/assets/fonts/subset-HelveticaNeueLTStd-Lt.woff') format('woff'),
+    url('/assets/fonts/subset-HelveticaNeueLTStd-Lt.ttf') format('truetype');
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Helvetica Neue';
+  src: url('/assets/fonts/subset-HelveticaNeueLTStd-It.eot');
+  src: url('/assets/fonts/subset-HelveticaNeueLTStd-It.eot?#iefix') format('embedded-opentype'),
+    url('/assets/fonts/subset-HelveticaNeueLTStd-It.woff2') format('woff2'),
+    url('/assets/fonts/subset-HelveticaNeueLTStd-It.woff') format('woff'),
+    url('/assets/fonts/subset-HelveticaNeueLTStd-It.ttf') format('truetype');
+  font-weight: normal;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Helvetica Neue';
+  src: url('/assets/fonts/subset-HelveticaNeueLTStd-Bd.eot');
+  src: url('/assets/fonts/subset-HelveticaNeueLTStd-Bd.eot?#iefix') format('embedded-opentype'),
+    url('/assets/fonts/subset-HelveticaNeueLTStd-Bd.woff2') format('woff2'),
+    url('/assets/fonts/subset-HelveticaNeueLTStd-Bd.woff') format('woff'),
+    url('/assets/fonts/subset-HelveticaNeueLTStd-Bd.ttf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Helvetica Neue';
+  src: url('/assets/fonts/subset-HelveticaNeueLTStd-LtIt.eot');
+  src: url('/assets/fonts/subset-HelveticaNeueLTStd-LtIt.eot?#iefix') format('embedded-opentype'),
+    url('/assets/fonts/subset-HelveticaNeueLTStd-LtIt.woff2') format('woff2'),
+    url('/assets/fonts/subset-HelveticaNeueLTStd-LtIt.woff') format('woff'),
+    url('/assets/fonts/subset-HelveticaNeueLTStd-LtIt.ttf') format('truetype');
+  font-weight: 300;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Helvetica Neue';
+  src: url('/assets/fonts/subset-HelveticaNeueLTStd-Roman.eot');
+  src: url('/assets/fonts/subset-HelveticaNeueLTStd-Roman.eot?#iefix') format('embedded-opentype'),
+    url('/assets/fonts/subset-HelveticaNeueLTStd-Roman.woff2') format('woff2'),
+    url('/assets/fonts/subset-HelveticaNeueLTStd-Roman.woff') format('woff'),
+    url('/assets/fonts/subset-HelveticaNeueLTStd-Roman.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Montserrat-Regular';
+  src: url('/assets/fonts/Montserrat-Regular.eot');
+  src: url('/assets/fonts/Montserrat-Regular.eot?#iefix') format('embedded-opentype'),
+    url('/assets/fonts/Montserrat-Regular.woff2') format('woff2'),
+    url('/assets/fonts/Montserrat-Regular.woff') format('woff'),
+    url('/assets/fonts/Montserrat-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'FF Meta';
+  src: url('/assets/fonts/subset-FFMetaSerifPro-Book.eot');
+  src: url('/assets/fonts/subset-FFMetaSerifPro-Book.eot?#iefix') format('embedded-opentype'),
+    url('/assets/fonts/subset-FFMetaSerifPro-Book.woff2') format('woff2'),
+    url('/assets/fonts/subset-FFMetaSerifPro-Book.woff') format('woff'),
+    url('/assets/fonts/subset-FFMetaSerifPro-Book.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'FF Meta';
+  src: url('/assets/fonts/subset-FFMetaSerifPro-BookItalic.eot');
+  src: url('/assets/fonts/subset-FFMetaSerifPro-BookItalic.eot?#iefix') format('embedded-opentype'),
+    url('/assets/fonts/subset-FFMetaSerifPro-BookItalic.woff2') format('woff2'),
+    url('/assets/fonts/subset-FFMetaSerifPro-BookItalic.woff') format('woff'),
+    url('/assets/fonts/subset-FFMetaSerifPro-BookItalic.ttf') format('truetype');
+  font-weight: normal;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'FF Meta';
+  src: url('/assets/fonts/subset-FFMetaSerifPro-Bold.eot');
+  src: url('/assets/fonts/subset-FFMetaSerifPro-Bold.eot?#iefix') format('embedded-opentype'),
+    url('/assets/fonts/subset-FFMetaSerifPro-Bold.woff2') format('woff2'),
+    url('/assets/fonts/subset-FFMetaSerifPro-Bold.woff') format('woff'),
+    url('/assets/fonts/subset-FFMetaSerifPro-Bold.ttf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+}
+
+$line-height: 1.5;
+
+@mixin fancy-font {
+  font-family: "proxima-nova", Helvetica, arial, sans-serif;
+  .fonts-loaded & {
+    font-family: "Montserrat-Regular", "proxima-nova", Helvetica, arial, sans-serif;
+  }
+}
+@mixin serious-font {
+  font-family: Georgia, "Times New Roman", Times, serif;
+  .fonts-loaded & {
+    font-family: "FF Meta", Georgia, "Times New Roman", Times, serif;
+  }
+}
+@mixin body-font {
+  font-family: "proxima-nova", Helvetica, arial, sans-serif;
+  .fonts-loaded & {
+    font-family: "Helvetica Neue", "proxima-nova", Helvetica, arial, sans-serif;
+  }  
+}
+
 
 html {
   font-size: 100%;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 body {
   line-height: $line-height;
-  font-family: $body-font;
   color: $body-color;
+  @include body-font;
 }
 
 /* 
  * Modular scale
- * http://www.modularscale.com/?1.25&em&1.33&web&text
+ * http://www.modularscale.com/?1.2&em&1.3&web&text
 */
 
 $type-scale: (
   hero: 6rem, // deviates from modular scale
-  sub-hero: 5.202rem,
-  h1: 3.911rem,
-  h2: 2.941rem,
-  h3: 2.211rem,
-  h4: 1.663rem,
-  p: 1.25rem,
-  small: 1rem // deviates from modular scale
+  sub-hero: 4.456rem,
+  h1: 3.427em,
+  h2: 2.636rem,
+  h3: 2.028rem,
+  h4: 1.56rem,
+  p: 1.2rem,
+  small: 1.05rem // deviates from modular scale
 );
 
 /* 
  * Modular scale
- * http://www.modularscale.com/?1.25&em&1.25&web&text
+ * http://www.modularscale.com/?1.1&em&1.3&web&text
 */
 
 $type-scale-tablet: (
-  hero: 4.768rem,
-  sub-hero: 3.815rem,
-  h1: 3.052rem,
-  h2: 2.441rem,
-  h3: 1.953em,
-  h4: 1.563rem,
-  p: 1.25rem, 
+  hero: 5.309rem,
+  sub-hero: 4.084rem,
+  h1: 3.142rem,
+  h2: 2.417rem,
+  h3: 1.859em,
+  h4: 1.43rem,
+  p: 1.1rem, 
   small: 1rem
 );
 
 
 /* 
  * Modular scale
- * http://www.modularscale.com/?1.1&em&1.25&web&text
+ * http://www.modularscale.com/?1.05&em&1.2&web&text
 */
 
 $type-scale-mobile: (
-  hero: 4.196rem,
-  sub-hero: 3.357rem,
-  h1: 2.686rem,
-  h2: 2.148rem,
-  h3: 1.719rem,
-  h4: 1.375rem,
-  p: 1.1rem,
+  hero: 3.135rem,
+  sub-hero: 2.613rem,
+  h1: 2.177rem,
+  h2: 1.814rem,
+  h3: 1.512rem,
+  h4: 1.26rem,
+  p: 1.05rem,
   small: 0.94rem // deviates from modular scale
 );
 
 
 $breakpoint-tablet: 75em;
-$breakpoint-mobile: 45em;
+$breakpoint-mobile: 44em;
 
 @mixin size($level) {
   font-size: map-get($type-scale, $level);
@@ -84,10 +204,10 @@ $whitespace: $line-height * map-get($type-scale, p);
 @mixin margin-bottom($level) {
   margin-bottom: $line-height * map-get($type-scale, p) * $level;
   @media (max-width: $breakpoint-tablet) {
-     margin-bottom: $line-height * map-get($type-scale-tablet, p) * $level;
+     margin-bottom: $line-height * map-get($type-scale-tablet, p) * $level * 0.8;
   }
   @media (max-width: $breakpoint-mobile) {
-     margin-bottom: $line-height * map-get($type-scale-mobile, p) * $level;
+     margin-bottom: $line-height * map-get($type-scale-mobile, p) * $level * 0.66;
   }
 }
 
@@ -109,51 +229,23 @@ p {@include size(p);}
 li {@include size(p);}
 small {@include size(small);}
 
-h1 {font-family: $heading-font}
 
-h1,
-h2,
-h3,
-h4,
-p,
-ul,
-ol,
-small {
-  @include margin-bottom(1);
-}
 
 ol,
 ul {
   padding-left: 1.4rem;
 }
 
-blockquote {
-  @include margin-bottom(1);
-  @include size(p);
-  padding: 1rem 0 1rem 1.6rem;
-  border-left: 0.5rem solid color($theme-color);
-  margin-top: $whitespace;
-}
-
-cite {
-  &:before {
-    content: '\2014 ';
-  }
-  color: color($grey, 400);
-  display: block;
-}
-
-
 @mixin container($width: 48rem) {
   margin: auto;
   @include margin-top(1);
-  @include margin-bottom(1);
+  @include margin-bottom(3);
   max-width: $width;
-  padding-left: 1rem;
-  padding-right: 1rem;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
 }
 
 a {
-  color: color($theme-color);
-  /* Additional Styling in modules/_smart-underline.scss */
+  text-decoration: none;
+  color: inherit;
 }

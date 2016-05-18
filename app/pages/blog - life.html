@@ -1,0 +1,35 @@
+---
+layout: default
+nav-blog: true
+root: blog
+title: Life
+---
+
+<div class="blog__container">
+	<section class="blog__header">
+		<h1 class="title">My Blog - Life</h1>
+		<h2 class="desc">My personal thoughts on <a href="/blog/web-design">web design</a>, <a href="/blog/web-development">web development</a>, <a href="/blog/game-design">game design</a>, and <a href="/blog/life">life</a>.</h2>
+	</section>
+
+	<section class="blog__list">
+			
+			{{#each collections.life}}
+			<div class="wrapper">
+					<a class="entry" href="/{{this.path}}">
+						<div class="thumbnail">
+							<img src="/assets/images/{{this.thumbnail}}">
+						</div>
+						<div class="textarea">
+							<span class="date">{{formatDate this.date}}</span>
+							<h1 class="title">{{this.title}}</h1>
+							<h2 class="desc">{{this.description}}</h2>
+						</div>
+					</a>
+			</div>
+			{{/each}}
+
+			<div class="return-wrapper">
+				<a href="/blog" class="return">Return To All Posts</p>
+			</div>
+	</section>
+</div>
