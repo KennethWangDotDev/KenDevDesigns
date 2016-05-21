@@ -17,7 +17,7 @@ Search Engine Optimization is a tricky subject which has gone over many signific
 
 ### Setting Proper META Tags ###
 
-Setting up META tags properly is the most basic yet also one of the most **crucial** thing to do for SEO. META tags give search engines more information about a web page. There are many META tags, but the SEO relevent ones are the Title tag and the Description tag.
+Setting up META tags properly is the most basic yet also one of the most **crucial** thing to do for SEO. META tags give search engines more information about a web page. There are many META tags, but the SEO relevant ones are the Title tag and the Description tag.
 
 ```html
 <head>
@@ -46,7 +46,7 @@ Semantic markup helps to index your content faster and more accurately. Semantic
 
 In order to correctly make use of semantic markup, you must use each of the tags the way they were intended to. Your `h1` should describe the most important title. The `nav` should describe the navigation, and et cetera. 
 
-Althoughe semantic markup provides information about the *type* of the content, it does not provide information about the content itself. This can be resolved with marking up your content with Microdata.
+Although semantic markup provides information about the *type* of the content, it does not provide information about the content itself. This can be resolved with marking up your content with Microdata.
 
 >Your web pages have an underlying meaning that people understand when they read the web pages. But search engines have a limited understanding of what is being discussed on those pages. By adding additional tags to the HTML of your web pages—tags that say, "Hey search engine, this information describes this specific movie, or place, or person, or video"—you can help search engines and other applications better understand your content and display it in a useful, relevant way. Microdata is a set of tags, introduced with HTML5, that allows you to do this.
 ><cite>schema.org</cite>

@@ -124,6 +124,26 @@ gulp.task('html', function() {
           personal: {
             sortBy: 'date',
             reverse: true
+          },
+          webdesign: {
+            sortBy: 'date',
+            reverse: true
+          },
+          webdev: {
+            sortBy: 'date',
+            reverse: true
+          },
+          webdev: {
+            sortBy: 'date',
+            reverse: true
+          },
+          gamedev: {
+            sortBy: 'date',
+            reverse: true
+          },
+          life: {
+            sortBy: 'date',
+            reverse: true
           }
       }))
       .use(markdown({
@@ -160,7 +180,7 @@ gulp.task('html', function() {
 
 gulp.task('critical', function () {
     return gulp.src('dist/**/*.html')
-        .pipe(critical({base: 'dist/', inline: true, css: ['dist/assets/css/main.css'], minify: true, width: 1920, height: 1080, ignore: ['@font-face']}))
+        .pipe(critical({base: 'dist/', inline: true, css: ['dist/assets/css/main.css'], minify: true, width: 1920, height: 1080}))
         .pipe(replace('<style type="text/css">', '<!--#if expr="$HTTP_COOKIE=/fonts-loaded=true/" --><link rel="stylesheet" href="/assets/css/main.css"><!--#else --><style type="text/css">'))
         .pipe(replace('</noscript>', '</noscript><!--#endif -->'))
         .pipe(gulp.dest('dist'));

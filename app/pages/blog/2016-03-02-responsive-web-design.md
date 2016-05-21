@@ -13,7 +13,7 @@ thumbnail: blog/responsive-web-design/thumbnail.png
 description: "In this day and age, a good website must not only look and function well on your computer, but it must look and function well across every single device."
 ---
 
-For every single one of my clients' sites, I incoporate a technique called Responsive Web Design. I'm often asked by them what exactly it is, and what problem it tries to solve. This article should answer those exact questions.
+For every single one of my clients' sites, I incorporate a technique called Responsive Web Design. I'm often asked by them what exactly it is, and what problem it tries to solve. This article should answer those exact questions.
 
 
 ### The Mobile Age ###

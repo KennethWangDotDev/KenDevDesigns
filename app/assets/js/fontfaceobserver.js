@@ -33,23 +33,30 @@ a;q()});y(p,J(c,'"'+c.family+'",monospace'))})})};window.FontFaceObserver=B;wind
         style: "italic"
     });
     var font3 = new w.FontFaceObserver( "Helvetica Neue", {
-        weight: 100,
+        weight: 100
     });
     var font4 = new w.FontFaceObserver( "Helvetica Neue", {
         weight: 100,
         style: "italic"
     });
     var font5 = new w.FontFaceObserver( "Helvetica Neue", {
-        weight: 800,
-    });
-    var font6 = new w.FontFaceObserver( "Montserrat-Regular", {
-        weight: 400,
+        weight: 800
     });
     var font7 = new w.FontFaceObserver( "FF Meta", {
+        weight: 400
+    });
+    var font8 = new w.FontFaceObserver( "FF Meta", {
         weight: 400,
+        style: "italic"
+    });
+    var font9 = new w.FontFaceObserver( "FF Meta", {
+        weight: 800
+    });
+    var font6 = new w.FontFaceObserver( "Montserrat-Regular", {
+        weight: 400
     });
     w.Promise
-        .all([font1.check(), font2.check(), font3.check(), font4.check(), font5.check(), font6.check(), font7.check()])
+        .all([font1.check(null, 15000), font2.check(null, 15000), font3.check(null, 15000), font4.check(null, 15000), font5.check(null, 15000), font6.check(null, 15000), font7.check(null, 15000), font8.check(null, 15000), font9.check(null, 15000)])
         .then(function(){
             w.document.documentElement.className += "fonts-loaded";
             createCookie("fonts-loaded", true, 365);

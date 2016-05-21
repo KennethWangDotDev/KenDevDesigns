@@ -69,7 +69,10 @@
 
   .name {
     display: inline-block;
-    font-weight: 800;
+    font-weight: 700;
+    .fonts-loaded {
+      font-weight: 800;
+    }
     font-size: 5.65rem;
     text-align: right;
     line-height: 0.9;
