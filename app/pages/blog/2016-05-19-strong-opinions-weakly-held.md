@@ -10,7 +10,7 @@ collection:
 
 thumbnail: blog/strong-opinions-weakly-held/thumbnail.png
 
-description: "I want to share with everyone my CSS style guide that I have been experimenting with and found great success with. I call it LucidCSS."
+description: "I discovered the quote “strong opinions, weakly held” recently and have been in love with it ever since. The quote might seem contradictory at first glance, but it actually makes perfect sense."
 ---
 
 >I’ve been pretty obsessed about the difference between smart people and wise people for years. I tried to write a book called “The Attitude of Wisdom” a couple times. And the virtues of wise people – those who have the courage to act on their knowledge, but the humility to doubt what they know – is one of the main themes in Hard Facts.<br>Perhaps the best description I’ve ever seen of how wise people act comes from the amazing folks at Palo Alto’s Institute for the Future. A couple years ago, I was talking the Institute’s Bob Johansen about wisdom, and he explained that – to deal with an uncertain future and still move forward – they advise people to have “strong opinions, which are weakly held.”  They've been giving this advice for years, and I understand that it was first developed by Instituite Director Paul Saffo.  Bob explained that weak opinions are problematic because people aren’t inspired to develop the best arguments possible for them, or to put forth the energy required to test them. Bob explained that it was just as important, however, to not be too attached to what you believe because, otherwise, it undermines your ability to “see” and “hear” evidence that clashes with your opinions.

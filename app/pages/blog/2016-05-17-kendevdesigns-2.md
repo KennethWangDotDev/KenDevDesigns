@@ -103,8 +103,7 @@ How did I make it so fast?
 * Every HTML file is minified
 * Critical CSS for each page inlined in HTML `<style>`
 * Concatenated and minified CSS and JavaScript file
-* Every image compressed
-* Uses InstantClick which pre-loads the page upon hovering over a link to it
+* Every image is losslessly compressed
 * Gzip compression of important assets
 * No render-blocking of any kind
 * CSS, JavaScript, and fonts are cached and are used in all pages
@@ -117,12 +116,12 @@ KenDevDesigns 2.0 uses the webfonts Helvetica Neue, FF Meta Serif, and Montserra
 I used a generator that provided me with `eot`, `ttf`, `woff`, and `woff2` formats for each type-family. On the server-side, I enabled Gzip compression for `eot` and `ttf` files to further reduce the file size. The `woff` and `woff2` files do not need to be Gzip compressed since they are already compressed. Finally, I used the [Hardened Bulletproof Fontspring Syntax](http://blog.fontspring.com/2011/02/further-hardening-of-the-bulletproof-syntax/) to include them in my stylesheet. 
 
 
-For font loading, I used a strategy I invented which I call "Conditional Critical CSS". [Read more about it here](104.236.93.62/blog/conditional-critical-css).
+For font loading, I used a strategy I invented which I call "Conditional Critical CSS". [Read more about it here](http://kendevdesigns.com/blog/conditional-critical-css).
 
 ## LucidCSS
 
 
-LucidCSS is a CSS style guide that I have been developing. For an extremely short summary of it, LucidCSS's goal is to keep things simple, which is achieved by having only a single class per element. I experimented a lot with LucidCSS on this site and figured out some new rules and optimizations for it. [Read more about it here](http://lucidcss.io).
+This website uses an early version of LucidCSS. LucidCSS is a style guide that I developed which completely revolutionizes the way CSS is organized and structured. For an extremely short summary of it, LucidCSS's goal is to keep things simple, which is achieved by having only a single class per element. I experimented a lot with LucidCSS on this site and figured out some new rules and optimizations for it. [Read more about it here](http://lucidcss.io).
 
 ## Closing Words
 
