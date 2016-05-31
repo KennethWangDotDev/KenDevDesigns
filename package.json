@@ -45,12 +45,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/kennethwang14/KennethStarterKit.git"
+    "url": "https://github.com/kennethwang14/KenDevDesigns"
   },
   "author": "Kenneth Wang",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/kennethwang14/KennethStarterKit/issues"
+    "url": "https://github.com/kennethwang14/KenDevDesigns/issues"
   },
-  "homepage": "https://github.com/kennethwang14/KennethStarterKit#readme"
+  "homepage": "http://kendevdesigns.com"
 }
