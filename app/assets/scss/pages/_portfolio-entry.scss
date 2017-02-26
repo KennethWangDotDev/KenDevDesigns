@@ -19,6 +19,8 @@
       @include size(h4);
       @include serious-font;
       line-height: 1.6;
+      padding-left:1rem;
+      padding-right:1rem;
           a {
             @include link-underline(white, color($theme-color, 200), 90%, 1px);
           }
@@ -40,6 +42,8 @@
     .answer {
       @include size(small);
     }
+    padding-left:1rem;
+    padding-right:1rem;
 }
 
 .portfolio-entry__testimonial {
@@ -104,21 +108,64 @@
         border-color: $body-color;
         background-color: $body-color;
       }
+      .page-desc {
+        text-align: center;
+        @include size(h5);
+        @include body-font;
+        width: 100%;
+        max-width: 60rem;
+        margin: auto;
+        @include margin-bottom(1.5);
+        font-weight: 400;
+        color: color($grey, 700);
+          a {
+            color: color($theme-color, 400);
+            @include link-underline(white, color($theme-color, 200), 90%, 1px);
+          }
+      }
       .plyr {
         @include margin-bottom(4);
+      }
+      .browser.multi-browser {
+        @include margin-bottom(1);
+        display: block;
       }
       .browser {
         @include margin-bottom(4);
         display: block;
       }
+      .spacing-full {
+        @include margin-bottom(4);
+        display: block;
+          img {
+            vertical-align: middle;
+          }
+      }
+      .spacing {
+        @include margin-bottom(1);
+        display: block;
+          img {
+              vertical-align: middle;
+            }
+      }
+
+      .link-below {
+        @include margin-bottom(2);
+      }
 
       .duo {
+        @include margin-bottom(3);
         lost-utility: clearfix;
+        &.multi-browser {
+          margin-bottom:0;
+        }
+        &.link-below {
+          @include margin-bottom(1.5);
+        }
       }
 
           .col {
             lost-column: 1/2;
-            @include margin-bottom(1);
             @media (max-width: $breakpoint-mobile) {
               lost-column: none;
               lost-row: 1/2;
@@ -126,7 +173,7 @@
               width: 95%!important; /* TODO: use another method */
             }
             .browser {
-              @include margin-bottom(1.5);
+              @include margin-bottom(1);
             }
           }
 
