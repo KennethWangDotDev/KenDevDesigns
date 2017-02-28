@@ -79,28 +79,6 @@
   font-style: normal;
 }
 
-@font-face {
-  font-family: 'FF Meta';
-  src: url('/assets/fonts/subset-FFMetaSerifPro-BookItalic.eot');
-  src: url('/assets/fonts/subset-FFMetaSerifPro-BookItalic.eot?#iefix') format('embedded-opentype'),
-    url('/assets/fonts/subset-FFMetaSerifPro-BookItalic.woff2') format('woff2'),
-    url('/assets/fonts/subset-FFMetaSerifPro-BookItalic.woff') format('woff'),
-    url('/assets/fonts/subset-FFMetaSerifPro-BookItalic.ttf') format('truetype');
-  font-weight: normal;
-  font-style: italic;
-}
-
-@font-face {
-  font-family: 'FF Meta';
-  src: url('/assets/fonts/subset-FFMetaSerifPro-Bold.eot');
-  src: url('/assets/fonts/subset-FFMetaSerifPro-Bold.eot?#iefix') format('embedded-opentype'),
-    url('/assets/fonts/subset-FFMetaSerifPro-Bold.woff2') format('woff2'),
-    url('/assets/fonts/subset-FFMetaSerifPro-Bold.woff') format('woff'),
-    url('/assets/fonts/subset-FFMetaSerifPro-Bold.ttf') format('truetype');
-  font-weight: bold;
-  font-style: normal;
-}
-
 $line-height: 1.5;
 
 @mixin fancy-font {
