@@ -82,8 +82,14 @@
   }
       .btn-container button {
         @include button-lite(color($theme-color));
-        padding-left: 6rem;
-        padding-right: 6rem;
+        max-width: 30rem;
+        width: 100%;
+      }
+
+      .btn-container-padding {
+        // TODO: Remove this workaround
+        padding-left: 1rem;
+        padding-right: 1rem;
       }
 
   .gradient {
