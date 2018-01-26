@@ -200,11 +200,10 @@
   $page-breakpoint-small: 60em;
   padding: 4.5rem 2rem 6rem;
   border-top: 1px solid color($grey, 300);
-  background: -webkit-linear-gradient(90deg, #ECE9E6 10%, #FFFFFF 90%); /* Chrome 10+, Saf5.1+ */
-  background:    -moz-linear-gradient(90deg, #ECE9E6 10%, #FFFFFF 90%); /* FF3.6+ */
-  background:     -ms-linear-gradient(90deg, #ECE9E6 10%, #FFFFFF 90%); /* IE10 */
-  background:      -o-linear-gradient(90deg, #ECE9E6 10%, #FFFFFF 90%); /* Opera 11.10+ */
-  background:         linear-gradient(90deg, #ECE9E6 10%, #FFFFFF 90%); /* W3C */
+  background: #ECE9E6;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #ECE9E6, #FFFFFF);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #ECE9E6, #FFFFFF); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  
   @media (max-width: $page-breakpoint-small) {
     padding: 3.5rem 1rem;
   }
