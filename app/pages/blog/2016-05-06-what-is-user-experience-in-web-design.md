@@ -3,7 +3,7 @@ title: What Is User Experience In Web Design?
 layout: blog-post
 root: blog
 nav-blog: true
-date: 2016-04-27
+date: 2016-05-06
 collection:
   - blog
   - webdesign

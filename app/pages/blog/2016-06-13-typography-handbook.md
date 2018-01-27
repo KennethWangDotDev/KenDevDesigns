@@ -3,7 +3,7 @@ title: Typography Handbook
 layout: blog-post
 root: blog
 nav-blog: true
-date: 2016-05-06
+date: 2016-06-13
 collection:
   - blog
   - webdesign

@@ -3,7 +3,7 @@ title: Conditional Critical CSS
 layout: blog-post
 root: blog
 nav-blog: true
-date: 2016-05-16
+date: 2016-06-24
 collection:
   - blog
   - webdev

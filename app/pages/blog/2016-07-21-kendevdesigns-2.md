@@ -3,7 +3,7 @@ title: KenDevDesigns.com 2.0
 layout: blog-post
 root: blog
 nav-blog: true
-date: 2016-05-17
+date: 2016-07-21
 collection:
   - blog
   - webdesign

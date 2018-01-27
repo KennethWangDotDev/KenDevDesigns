@@ -3,7 +3,7 @@ title: Strong Opinions, Weakly Held
 layout: blog-post
 root: blog
 nav-blog: true
-date: 2016-05-19
+date: 2017-03-12
 collection:
   - blog
   - life
