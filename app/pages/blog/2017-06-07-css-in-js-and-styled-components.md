@@ -10,130 +10,91 @@ collection:
 
 thumbnail: blog/css-in-js-and-styled-components/thumbnail.png
 
-description: "I discovered the quote “strong opinions, weakly held” recently and have been in love with it ever since. The quote might seem contradictory at first glance, but it actually makes perfect sense."
+description: "With the rising popularity of JavaScript frontend frameworks, components have become the building blocks instead of HTML elements, and integrating maintainable CSS became even more convoluted. One solution that people turned to was CSS-In-JS."
 ---
 
-I recently was contracted to develop [Rivals Rankings](http://localhost:3000/portfolio/rivals-of-aether/) --- a power rankings service for the online competitive game [Rivals of Aether](http://www.rivalsofaether.com/). Rivals Rankings works by fetching tournament data from [smash.gg](https://smash.gg/) (tournament hosting service) and running match results through [TrueSkill](https://www.microsoft.com/en-us/research/project/trueskill-ranking-system/). Prior to working on the project, I heard many good things about GraphQL and decided to give it a try. To my surprise, GraphQL was incredibly easy to use with great results. If you haven’t already heard about GraphQL yet, you will most likely hear about it very soon. GraphQL has been trending, and is expected to get even more popular in 2018.
 
+Ever since the dawn of the internet, developers have been fighting with complexity and related bugs of cascading style sheets. There has been many proposed methodologies and solutions to organize and write maintainable CSS ([OOCSS](https://www.smashingmagazine.com/2011/12/an-introduction-to-object-oriented-css-oocss/), [ACSS](https://acss.io/), [BEM](https://en.bem.info/methodology/), [SMACSS](https://smacss.com/)), but they almost always are hard to manage and do not scale well without rigorous supervision. I personally have written [LucidCSS](http://kendevdesigns.com/other/lucidcss/), a Sass-enabled CSS methodology that I swore by for the longest time.
 
-### Why GraphQL
+With the rising popularity of JavaScript frontend frameworks (React, Vue.js, Ember.js to name a few), components have become the building blocks instead of HTML elements, and integrating maintainable CSS became even more convoluted. One solution that people turned to was CSS-In-JS. 
 
-Firstly, what exactly is GraphQL? In the words of its creator:
+### CSS-In-JS
 
-> GraphQL is a query language for APIs and a runtime for fulfilling those queries with your existing data. GraphQL provides a complete and understandable description of the data in your API, gives clients the power to ask for exactly what they need and nothing more, makes it easier to evolve APIs over time, and enables powerful developer tools.
+The main premise for CSS-in-JS is that styles, JavaScript, and markup all have the same, shared concern and therefore should be tightly coupled. Problems with potential collisions are resolved by scoping styles to the component. We have a 0% chance of styles leaking. And if styles are updated in the component there are no ripple-effects across the DOM. What was once a best-practice / guideline is now strictly enforced by the nature of the tooling. By tying styles directly to your components, you can completely forget about massive stylesheets, or even separate CSS pipelines
 
-GraphQL's main selling point is that it provides a **single endpoint** and retrieves **only the data you ask for**. These two features might sound trivial, but they are actually extremely useful. To fully understand the power of GraphQL, it is first important to realize what problems that it aims to solve. Consider a blog post with 50 comments. Ideally, how many requests should fetching the post from an API take:
+A common critique of modern CSS-in-JS libraries is complexity (or at least a feeling of complexity), and that’s fair. But the appeal of CSS-in-JS is not simplicity, rather predictability and consistency. In the [famous talk "React: CSS in JS" by vjeux](https://speakerdeck.com/vjeux/react-css-in-js), he outlined 7 core problems with CSS:
 
-* 11 requests (1 for the post and 1 for each comment)
-* 2 requests (1 for the post and 1 for all comments)
-* 1 request (1 payload encapsulating these 11 resources)
+![alt text](https://cdn-images-1.medium.com/max/800/1*CyoBdFHojKjEnQ8_CJRuKQ.png "Test")
 
-Ideally in terms of server load, 1 request is best. It is most likely that the initialization of the HTTP request is the most expensive part of the retrieval, so splitting these requests apart would make each individual request smaller but would increase the total amount of time it takes to render our page.
+Similar to how Facebook "solved" the majority of those listed problems with hacks and workarounds, my Gulp workflow implementing LucidCSS also "solved" most of the problems. Because of this, I've always stayed with regular CSS as it allowed me to easily integrate Sass and PostCSS.
 
-As the product grows, maybe the client would ask you to create a mobile version of the site, where only 5 comments are displayed, and that author metadata is omitted from the main post. Now our previous request is going to contain extra unused data. In this simple example, it may be permissible to simply ignore the extra data. But as the data graph grows even further, more complexity will be introduced and there may come a time where the relevant data isn't even in the majority content of the payload.
+However, this was all in the past before I discovered [styled-components](https://github.com/styled-components/styled-components).
 
-This is where GraphQL comes in. GraphQL has a single endpoint so there is only a single request. You then query the endpoint --- asking for exactly the data you need --- and GraphQL spits back the resulting data to you.
+### styled-components
 
-### Easiest Queries Ever
+One thing that immediately drew me towards styled-components is that their core philosophy aligns with my own philosophy: a singular "class" per element. This is something that I also strongly emphasize in LucidCSS. I am heavily against Bootstrap style utility classes where it is common to have six or seven classes strung onto a single element. However, styled-component goes one step farther and actually just removes the class attribute entirely and instead directly names elements.
 
-Querying data is easier than ever using GraphQL. In Rivals Rankings, I'm using the React + GraphQL + [Apollo](https://www.apollographql.com/) stack. Here is how I can easily get a player's basic information, all the sets he has played, and each individual match of each set.
-
-```javascript
-const matchInfoQuery = gql`
-	query Player($id: ID!) {
-	    Player(id: $id) {
-	        id
-	        name
-	        ratings
-	        sets {
-	            id
-	            date
-	            winnerScore
-	            loserScore
-	            loser {
-	                id
-	                name
-	            }
-	            winner {
-	                id
-	                name
-	            }
-	            matches {
-	                winner {
-	                    id
-	                    name
-	                }
-	                loser {
-	                    id
-	                    name
-	                }
-	                gameNumber
-	            }
-	        }
-	    }
-	}
-`;
+In styled-components, something like this:
+```html
+<div class="home-container"></div>
 ```
-The GraphQL query integrates seamlessly into JavaScript code, as I can just wrap the query in the `gql` template literal and Apollo takes care of everything else. As an added convenience, the returned JavaScript object perfectly mimics the shape of the query too, so I know exactly how to access each returned data.
-
-However, if I were to try to query the same information using a normalized REST API, the resulting code would look *much messier*. The below example uses the [got](https://www.npmjs.com/package/got) package for fetching.
-
-```javascript
-async function getPlayerMatchInfo() {
-    // Get player basic info
-    const playerInfo = (await got(`${apiEndpoint}/player/?id=${player.id}`, {
-        json: true
-    })).body;
-    playerInfo.setsExpanded = [];
-
-    // Expand sets
-    for (set of player.sets) {
-        const setInfo = (await got(`${apiEndpoint}/set/?id=${set.id}`, {
-            json: true
-        })).body;
-
-        // Get data for winner and loser from Id
-        setInfo.winnerExpanded = (await got(
-            `${apiEndpoint}/player/?id=${set.winnerId}`,
-            { json: true }
-        )).body;
-        setInfo.loserExpanded = (await got(
-            `${apiEndpoint}/player/?id=${set.loserId}`,
-            { json: true }
-        )).body;
-
-        // Expand matches
-        set.matchesExpanded = [];
-        for (match of set.matches) {
-            const matchInfo = (await got(
-                `${apiEndpoint}/match/?id=${match.id}`,
-                { json: true }
-            )).body;
-
-            // Get data for winner and loser from Id
-            match.winnerExpanded = (await got(
-                `${apiEndpoint}/player/?id=${match.winnerId}`,
-                { json: true }
-            )).body;
-            match.loserExpanded = (await got(
-                `${apiEndpoint}/player/?id=${match.loserId}`,
-                { json: true }
-            )).body;
-
-            // Store match expanded information into the set
-            set.matchesExpanded.push(match);
-        }
-
-        // Store set expanded information
-        playerInfo.setsExpanded.push(set);
-    }
-    return playerInfo;
+```css
+.home-container {
+	display: block;
+	background-color: #000;
 }
 ```
 
-Not only is the code hard to read (even when using the simple got package along with ES6 async/await keywords), but we are sending one request per set and match. This is extremely inefficient. The most common approach to remedy this is to add a new API endpoint that gives you all the set and match information upon a single request. However, this goes full circle and runs into the problem of inflexibility described above. The GraphQL approach is much cleaner, easier to read, more efficient, and can be easily modified to account for changes.
+becomes:
+```html
+<HomeContainer></HomeContainer>
+```
+```js
+const HomeContainer = styled.div`
+	display: block;
+	background-color: #000;
+`
+```
+Although it seems like a small change, it vastly improves the semantics and readability of your code, and reinforces good practices. Another great feature of styled-components is that the CSS you write using it in the named template literal is completely identical to regular CSS. This means that you do not need to learn a new API or syntax, and that a new team member can pick it up instantly. In addition, many Sass features are automatically enabled.
+
+```javascript
+const Link = styled.a`
+  cursor: pointer;
+  text-decoration: none;
+
+  // Sass
+  &:hover {
+    color: blue;
+    text-decoration: underline;
+  }
+`;
+```
+As it is JavaScript based, you can take full advantages of its powerful features. Here is an example from a recent project I've been working on where I import functions and snippets into my styles:
+
+```javascript
+import styled from 'styled-components';
+import { typography, colors } from '../../theme';
+import { materialDepth, media } from '../../utils';
+
+const RankingsTable = styled.table`
+    width: 100%;
+    ${materialDepth(5)};
+`;
+const TableHeader = styled.tr`
+    background-color: ${colors.themeColor};
+`;
+const Label = styled.td`
+    ${typography.size('h5')};
+    ${typography.useTitleFont};
+    padding: 2rem;
+	${media.small(`
+        padding: 1rem;
+    `)};
+`;
+```
+Similar to Sass mixins, this modular approach allows me to rapidly style new components.
 
 
 ### Conclusion
 
-Using GraphQL for Rivals Rankings has been an extremely positive experience for me. Similar to the example above, there are many complicated queries that are made trivial with GraphQL. GraphQL is still relatively new, but it has a very active community behind it who are constantly creating new tools to support it. GraphQL may just be the future of querying APIs.
+styled-components has been great for me, and I think it could be really useful for a lot of other teams as well. If you were like me and was hesitant to dive into CSS-In-JS, I strongly recommend you to just give styled-components a try.
