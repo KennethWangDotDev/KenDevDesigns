@@ -45,8 +45,8 @@ a;q()});y(p,J(c,'"'+c.family+'",monospace'))})})};window.FontFaceObserver=B;wind
     var font7 = new w.FontFaceObserver( "FF Meta", {
         weight: 400
     });
-    var font6 = new w.FontFaceObserver( "Montserrat-Regular", {
-        weight: 400
+    var font6 = new w.FontFaceObserver( "Montserrat", {
+        weight: 500
     });
     w.Promise
         .all([font1.check(null, 15000), font2.check(null, 15000), font3.check(null, 15000), font4.check(null, 15000), font5.check(null, 15000), font6.check(null, 15000), font7.check(null, 15000)])

@@ -63,24 +63,8 @@ var bannerHTML = [
   '\n\n'
 ].join('');
 
-//
-gulp.task('css', function () {
-  gulp.src('app/assets/scss/**/*.scss')
-    .pipe(plumber())
-    .pipe(sourcemaps.init())
-    .pipe(sassGlob())
-    .pipe(sass().on('error', sass.logError))
-    .pipe(postcss([
-      lost(),
-      autoprefixer()
-    ]))
-    .pipe(cssnano())
-    .pipe(sourcemaps.write())
-    .pipe(header(banner, { package : package }))
-    .pipe(gulp.dest('dist/assets/css'));
-});
 
-gulp.task('css-build', function () {
+gulp.task('css-build', function (done) {
   gulp.src('app/assets/scss/**/*.scss')
     .pipe(plumber())
     .pipe(sassGlob())
@@ -92,18 +76,20 @@ gulp.task('css-build', function () {
     .pipe(cssnano())
     .pipe(header(banner, { package : package }))
     .pipe(gulp.dest('dist/assets/css'));
+  done();
 });
 
-gulp.task('js',function(){
+gulp.task('js',function(done){
   gulp.src(['app/assets/js/**/*.js', '!app/assets/js/polyfill/**/*.js'])
     .pipe(plumber())
     .pipe(concat('merged.js'))
     .pipe(uglify())
     .pipe(header(banner, { package : package }))
     .pipe(gulp.dest('dist/assets/js'));
+  done();
 });
 
-gulp.task('html', function() {
+gulp.task('html', function(done) {
    gulp.src(['app/pages/**/*.html', 'app/pages/**/*.md', 'app/*.html', '!app/templates', '!app/templates/**/*', '!app/**/README.md'])
    .pipe(gulp_front_matter()).on("data", function(file) {
       assign(file, file.frontMatter); 
@@ -176,78 +162,55 @@ gulp.task('html', function() {
     }))
     .pipe(header(bannerHTML, { package : package }))
     .pipe(gulp.dest('dist'));
+  done();
 });
 
-gulp.task('critical', function () {
-    return gulp.src('dist/**/*.html')
+gulp.task('critical', function (done) {
+    gulp.src('dist/**/*.html')
         .pipe(critical({base: 'dist/', inline: true, css: ['dist/assets/css/main.css'], minify: true, width: 1920, height: 1080}))
         .pipe(replace('<style type="text/css">', '<!--#if expr="$HTTP_COOKIE=/fonts-loaded=true/" --><link rel="stylesheet" href="/assets/css/main.css"><!--#else --><style type="text/css">'))
         .pipe(replace('</noscript>', '</noscript><!--#endif -->'))
         .pipe(gulp.dest('dist'));
+    done();
 });
 
-gulp.task('imagemin', function() {
-  return gulp.src('app/assets/images/**/*.+(png|jpg|jpeg|gif|svg)')
+gulp.task('imagemin', function(done) {
+  gulp.src('app/assets/images/**/*.+(png|jpg|jpeg|gif|svg)')
     .pipe(cache(imagemin({
       svgoPlugins: [{removeViewBox: false}],
       use: [pngquant({quality: "80", floyd: 1, speed: 1}), jpegoptim({progressive: true, max: 90})]
     })))
     .pipe(gulp.dest('dist/assets/images'))
+  done();
 });
 
-gulp.task('clean', function() {
-    return del.sync('dist');
+gulp.task('clean', function(done) {
+  del.sync('dist');
+  done();
 });
 
 
-gulp.task('copy', function() {
+gulp.task('copy', function(done) {
    gulp.src(['app/*.*', 'app/.htaccess', '!app/*.md', '!app/*.html'])
     .pipe(gulp.dest('dist'));
   gulp.src(['app/assets/fonts/**'])
     .pipe(gulp.dest('dist/assets/fonts'));
+  done();
 });
 
 
 
-gulp.task('browser-sync', function() {
+gulp.task('browser-sync', function(done) {
     browserSync.init(null, {
         server: {
             baseDir: "./dist",
         },
         reloadDelay: 300
     });
+    done();
 });
 
-gulp.task('watch', function() {
-    gulp.watch("app/assets/scss/**/*.scss", ['css']).on('change', function(evt) {
-    	browserSync.reload();
-    });
 
-    gulp.watch("app/assets/js/**/*.js", ['js']).on('change', function(evt) {
-    	browserSync.reload();
-    });
-
-    gulp.watch("app/**/*.+(html|md)", ['html']).on('change', function(evt) {
-    	browserSync.reload();
-    });
-
-    gulp.watch("app/assets/images/**/*.+(png|jpg|jpeg|gif)", ['imagemin']).on('change', function(evt) {
-      browserSync.reload();
-    });
-});
-
-gulp.task('default', function (callback) {
-  runSequence('clean', 'copy', 'html',
-    ['imagemin', 'css', 'js'], 
-    ['browser-sync', 'watch'],
-    callback
-  )
-});
-
-gulp.task('build', function (callback) {
-  runSequence('clean', 'copy', 'html',
-    ['imagemin', 'css-build', 'js'],
-    'critical',
-    callback
-  )
-});
+gulp.task('build', gulp.series('clean', 'copy', 'html', 'imagemin', 'css-build', 'js', 'critical', function (done) {
+  done();
+}));
