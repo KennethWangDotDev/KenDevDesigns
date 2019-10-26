@@ -45,46 +45,4 @@ nav-portfolio: true
 		</section>
 	{{/each}}
 
-
-
-
-	<h1 class="main-title">Personal Work</h1>
-	<span class="main-desc">A collection of personal endeavors I am proud of.</span>
-	<hr>
-
-	{{#each collections.personal}}
-		<section class="portfolio__entry">
-
-			<div class="image-col">
-				<div class="browser" {{#if this.mobileImage}}{{else}}style="float: none;"{{/if}} data-url="{{ this.url }}">
-    			<img src="/assets/images/{{ this.desktopImage }}">
- 				</div>
- 				{{#if this.mobileImage}}
-				<div class="iphone">
-			    <div class="top-bar"></div>
-			    <div class="sleep"></div>
-			    <div class="volume"></div>
-			    <div class="camera"></div>
-			    <div class="sensor"></div>
-			    <div class="speaker"></div>
-			    <div class="screen">
-			        <img src="/assets/images/{{ this.mobileImage }}">
-			    </div>
-			    <div class="home"></div>
-			    <div class="bottom-bar"></div>
-				</div>
-				{{/if}}
-			</div>
-
-			<div class="text-col">
-				<h3 class="role">{{ this.role }}</h3>
-				<h1 class="title">{{ this.title }}</h1>
-				<h2 class="short-desc">{{ this.shortDescription }}</h2>
-				<a href="/{{this.path}}"><button>Project Overview</button></a>
-			</div>
-
-
-		</section>
-	{{/each}}
-
 </div>
